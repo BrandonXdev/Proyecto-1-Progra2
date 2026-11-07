@@ -8,20 +8,18 @@ public class HabitacionFamiliar extends Habitacion {
    public HabitacionFamiliar(String numero){
     super(numero); 
    }
-   public HabitacionFamiliar(String numero){
-      super(numero);
-   }
+   
    
    @Override
-   public int CapacidadMaxima(){
+   public int capacidadMaxima(){
        return 4;
    }
    @Override
-   public long TarifaPorNoche(){
+   public long tarifaPorNoche(){
        return 65000;
    }
    @Override
-   public String Tipo(){
+   public String tipo(){
        return "Habitacion Familiar";
    }
 }
