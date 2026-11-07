@@ -4,9 +4,6 @@
  */
 package Modelo;
 
-import java.lang.classfile.Signature;
-
-
 public class HabitacionFamiliar extends Habitacion {
    public HabitacionFamiliar(String numero){
     super(numero); 
@@ -14,13 +11,17 @@ public class HabitacionFamiliar extends Habitacion {
    public HabitacionFamiliar(String numero){
       super(numero);
    }
+   
+   @Override
    public int CapacidadMaxima(){
        return 4;
    }
+   @Override
    public long TarifaPorNoche(){
        return 65000;
    }
+   @Override
    public String Tipo(){
-       return "Hbitacion Familiar";
+       return "Habitacion Familiar";
    }
 }
