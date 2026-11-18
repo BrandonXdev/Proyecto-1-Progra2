@@ -111,32 +111,34 @@ public class Controlador {
         return gestor.getHabitaciones();
     }
     public void registrarReserva(String codigo, String idHuesped, String numHabitacion, 
-            int personas, java.time.LocalDate entrada, java.time.LocalDate salida) throws Exception {
-        
+          int personas, java.time.LocalDate entrada, java.time.LocalDate salida) throws Exception {
+    
         Huesped h = gestor.buscarHuesped(idHuesped);
         if (h == null) {
             throw new Exception("El huésped con identificación " + idHuesped + " no está registrado.");
         }
-        
+
         Habitacion hab = gestor.buscarHabitacion(numHabitacion);
         if (hab == null) {
             throw new Exception("La habitación " + numHabitacion + " no existe.");
         }
-        
+
         if (personas > hab.capacidadMaxima()) {
             throw new Exception("La cantidad de personas supera la capacidad máxima de la habitación (" + hab.capacidadMaxima() + ").");
         }
-        
-               Reserva nuevaReserva = new Reserva(codigo, h, hab, personas, entrada, salida, null, "Confirmada", gestor.getRecepcionistaActivo());
-        
+
+        Reserva nuevaReserva = new Reserva(codigo, h, hab, personas, entrada, salida, null, "Confirmada", gestor.getRecepcionistaActivo());
+
         gestor.agregarReserva(nuevaReserva);
+        gestor.actualizarReservasVencidas(java.time.LocalDate.now());
     }
     
     public java.util.List<Reserva> getListaReservas() {
         return gestor.getReservas();
     }
     public java.util.List<Habitacion> consultarDisponibilidad(String fechaStr) throws Exception {
-        LocalDate fecha = LocalDate.parse(fechaStr.trim()); // Espera formato YYYY-MM-DD
+        java.time.format.DateTimeFormatter formato = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        java.time.LocalDate fecha = java.time.LocalDate.parse(fechaStr.trim(), formato);
         return gestor.obtenerHabitacionesDisponibles(fecha);
     }
     public Reserva buscarReservaPorCodigo(String codigo) throws Exception {
@@ -166,5 +168,6 @@ public class Controlador {
             r.setFechaSalidaReal(java.time.LocalDate.now());
         }
     }
+  
  
 }

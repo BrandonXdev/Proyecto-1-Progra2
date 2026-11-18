@@ -7,7 +7,6 @@ package Vista;
 import Controlador.Controlador;
 import Modelo.Habitacion;
 import java.awt.Color;
-import java.time.LocalDate;
 
 /**
  *
@@ -20,10 +19,14 @@ public class FrmHotel extends javax.swing.JFrame {
     
     public FrmHotel() {
         initComponents();
+        Modelo.GestorHotel.getInstance().actualizarReservasVencidas(java.time.LocalDate.now());
         actualizarCamposHabitacion();
+        actualizarPanelInicio();
         generarCodigoReserva();
         cargarHabitacionesEnReserva();
         lblRecepcionista.setText("Recepcionista: " + controlador.getRecepcionistaActivo());
+        actualizarTablaReservas();
+        actualizarPanelInicio();
         txtFechaEntrada.setText("dd/MM/yyyy");
         txtFechaEntrada.setForeground(Color.GRAY);
 
@@ -164,9 +167,7 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         txtFechaSalida = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        lblImporte = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblReservas = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
@@ -199,6 +200,7 @@ public class FrmHotel extends javax.swing.JFrame {
         chkOut = new javax.swing.JCheckBox();
         btnProcesar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión Hotelera - Hotel");
@@ -354,7 +356,7 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(11, 42, 91));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Rservas vencidas ");
+        jLabel14.setText("Reservas vencidas ");
 
         lblReservadas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblReservadas.setForeground(new java.awt.Color(31, 42, 68));
@@ -979,17 +981,9 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel33.setForeground(new java.awt.Color(11, 42, 91));
         jLabel33.setText("Noches: ");
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(11, 42, 91));
-        jLabel34.setText("Importe: ");
-
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setForeground(new java.awt.Color(11, 42, 91));
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
-
-        lblImporte.setBackground(new java.awt.Color(204, 204, 204));
-        lblImporte.setForeground(new java.awt.Color(11, 42, 91));
-        lblImporte.setOpaque(true);
 
         tblReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1010,9 +1004,7 @@ public class FrmHotel extends javax.swing.JFrame {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1032,18 +1024,14 @@ public class FrmHotel extends javax.swing.JFrame {
                                     .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtHuesped)
                                         .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxHabitacionReserva, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbxHabitacionReserva, 0, 337, Short.MAX_VALUE)
                                         .addComponent(spnPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtFechaEntrada)
                                         .addComponent(txtFechaSalida)
-                                        .addGroup(jPanel17Layout.createSequentialGroup()
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel34)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(lblImporte, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnClean1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1084,11 +1072,8 @@ public class FrmHotel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(13, 13, 13)
+                                .addComponent(jTextField1))
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel17Layout.createSequentialGroup()
@@ -1394,18 +1379,31 @@ public class FrmHotel extends javax.swing.JFrame {
 
         tabPrincipal.addTab("Check in / Out", jPanel6);
 
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 656, Short.MAX_VALUE)
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 613, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 212, Short.MAX_VALUE))
         );
 
-        tabPrincipal.addTab("SImulación", jPanel7);
+        tabPrincipal.addTab("", jPanel7);
 
         getContentPane().add(tabPrincipal, java.awt.BorderLayout.CENTER);
         tabPrincipal.getAccessibleContext().setAccessibleName("");
@@ -1484,12 +1482,12 @@ public class FrmHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoReservaActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        try {
-            String fechaTexto = txtFechaConsulta.getText().trim();
-
-            if (fechaTexto.isEmpty()) {
-                throw new Exception("Por favor, ingrese una fecha de consulta.");
-            }
+       try {
+        String fechaTexto = txtFechaConsulta.getText().trim();
+        
+        if (fechaTexto.isEmpty() || fechaTexto.equals("dd/MM/yyyy")) {
+            throw new Exception("Por favor, ingrese una fecha válida en formato dd/MM/yyyy.");
+        }
 
             java.util.List<Habitacion> disponibles = controlador.consultarDisponibilidad(fechaTexto);
 
@@ -1506,7 +1504,7 @@ public class FrmHotel extends javax.swing.JFrame {
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Error en la fecha. Asegúrese de usar el formato AAAA-MM-DD (Ej: 2026-11-20).\nDetalle: " + e.getMessage(),
+                "Error en la fecha. Asegúrese de usar el formato DD-MM-AAAA (Ej: 20-11-2026).\nDetalle: " + e.getMessage(),
                 "Formato inválido",
                 javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -1845,7 +1843,6 @@ public class FrmHotel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1870,6 +1867,7 @@ public class FrmHotel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1894,7 +1892,6 @@ public class FrmHotel extends javax.swing.JFrame {
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblHabitacion;
     private javax.swing.JLabel lblHuesped;
-    private javax.swing.JLabel lblImporte;
     private javax.swing.JLabel lblImporte1;
     private javax.swing.JLabel lblIngresos;
     private javax.swing.JLabel lblNoOcupadas;
