@@ -4,12 +4,10 @@
  */
 package Modelo;
 
+import java.awt.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author brand
- */
 public class GestorHotel {
     private static GestorHotel instancia;
     
@@ -23,7 +21,93 @@ public class GestorHotel {
     public static synchronized GestorHotel getInstance(){
         return (instancia == null) ? (instancia = new GestorHotel()) : instancia;
     }
+
+    public String getRecepcionistaActivo() {
+        return recepcionistaActivo;
+    }
+
+    public void setRecepcionistaActivo(String recepcionistaActivo) {
+        this.recepcionistaActivo = recepcionistaActivo;
+    }
     
+    public void agregarHuesped(Huesped huesped){
+        for (Huesped h : huespedes) {
+            if (huesped.getIdentificacion().equalsIgnoreCase(huesped.getIdentificacion())) {
+                throw new IllegalArgumentException("El huesped ya existe");      
+            } 
+            huespedes.add(huesped);
+        }
+    }
     
+    public void agregarReserva(Reserva reserva){
+        for (Reserva r : reservas) {
+            if (r.getCodigo().equalsIgnoreCase(reserva.getCodigo())) {
+                throw new IllegalArgumentException("Ya existe una reserva con el codigo: "
+                        + reserva.getCodigo());  
+            }
+            if (reserva.getCantidadNoches() <=  0)  {
+                throw new IllegalArgumentException("La fecha de salida debe de ser"
+                        + " posterior a la fecha de entrada"); 
+            }
+            reservas.add(reserva);
+        }
+    }
     
-}
+    public void agregarHabitacion(Habitacion habitacion) {
+        for (Habitacion h : habitaciones) {
+            if (h.getNumero().equalsIgnoreCase(habitacion.getNumero())) {
+                throw new IllegalArgumentException("La habitación número " + habitacion.getNumero() + " ya está registrada.");
+            }
+        }
+        habitaciones.add(habitacion);  
+    }
+    
+    public synchronized void procesarIndicadoresCiclo() {
+        int totalHabitaciones = habitaciones.size();
+        int confirmadas = 0;
+        int vencidas = 0;
+        int ocupadas = 0;
+
+        for (Reserva r : reservas) {
+            String estado = r.getEstado();
+            if ("Confirmada".equalsIgnoreCase(estado)) confirmadas++;
+            else if ("Vencida".equalsIgnoreCase(estado)) vencidas++;
+            else if ("Hospedado".equalsIgnoreCase(estado)) ocupadas++;
+        }
+        long ingresos = calcularIngresosEsperados();
+
+        System.out.println("--- INDICADORES DEL HOTEL ---");
+        System.out.println("Total Habitaciones: " + totalHabitaciones);
+        System.out.println("Reservas Confirmadas: " + confirmadas);
+        System.out.println("Reservas Vencidas: " + vencidas);
+        System.out.println("Ingresos Esperados (Recursivo): ₡" + ingresos);
+        System.out.println("-----------------------------");
+        
+ }
+    public synchronized void actualizarReservasVencidas(LocalDate hoy) {
+        for (Reserva r : reservas) {
+            if ("Confirmada".equalsIgnoreCase(r.getEstado())) {
+                if (r.getFechaEntrada().isBefore(hoy)) {
+                    r.setEstado("Vencida");
+                    System.out.println("[GestorHotel] Reserva "  + r.getCodigo() +  " actualizada a Vencida automáticamente.");   
+                }     
+            }   
+        }     
+    } 
+    
+    public long calcularIngresosEsperados(){
+        return calcularIngresosEsperadosR(reservas, 0);
+    }
+    
+    private long calcularIngresosEsperadosR(ArrayList<Reserva> lista, int indice) {
+ 
+        if (lista == null || lista.isEmpty() || indice >= lista.size()) {
+            return 0;
+        }
+        
+        Reserva actual = lista.get(indice);
+        long importe = "Confirmada".equalsIgnoreCase(actual.getEstado()) ? actual.getImporteTotal() : 0;
+        
+        return importe + calcularIngresosEsperadosR(lista, indice + 1);
+    }
+}    
