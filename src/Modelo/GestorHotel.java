@@ -29,14 +29,28 @@ public class GestorHotel {
     public void setRecepcionistaActivo(String recepcionistaActivo) {
         this.recepcionistaActivo = recepcionistaActivo;
     }
+
+    public ArrayList<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public ArrayList<Huesped> getHuespedes() {
+        return huespedes;
+    }
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+    
     
     public void agregarHuesped(Huesped huesped){
         for (Huesped h : huespedes) {
-            if (huesped.getIdentificacion().equalsIgnoreCase(huesped.getIdentificacion())) {
-                throw new IllegalArgumentException("El huesped ya existe");      
+            if (h.getIdentificacion().equalsIgnoreCase(huesped.getIdentificacion())) {
+                throw new IllegalArgumentException("El huésped con esta identificación ya existe");      
             } 
-            huespedes.add(huesped);
         }
+
+        huespedes.add(huesped);
     }
     
     public void agregarReserva(Reserva reserva){
@@ -49,8 +63,9 @@ public class GestorHotel {
                 throw new IllegalArgumentException("La fecha de salida debe de ser"
                         + " posterior a la fecha de entrada"); 
             }
-            reservas.add(reserva);
+            
         }
+        reservas.add(reserva);
     }
     
     public void agregarHabitacion(Habitacion habitacion) {
@@ -109,5 +124,54 @@ public class GestorHotel {
         long importe = "Confirmada".equalsIgnoreCase(actual.getEstado()) ? actual.getImporteTotal() : 0;
         
         return importe + calcularIngresosEsperadosR(lista, indice + 1);
+    }
+    public Huesped buscarHuesped(String identificacion) {
+        for (Huesped h : huespedes) {
+            if (h.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                return h;
+            }
+        }
+        return null;
+    }
+
+    public Habitacion buscarHabitacion(String numero) {
+        for (Habitacion hab : habitaciones) {
+            if (hab.getNumero().equalsIgnoreCase(numero)) {
+                return hab;
+            }
+        }
+        return null;
+    }
+    public ArrayList<Habitacion> obtenerHabitacionesDisponibles(LocalDate fechaConsulta) {
+        ArrayList<Habitacion> disponibles = new ArrayList<>();
+        
+        for (Habitacion hab : habitaciones) {
+            boolean ocupada = false;
+            for (Reserva r : reservas) {
+                // Verificamos si la reserva está activa/confirmada/hospedada
+                String estado = r.getEstado();
+                if ("Confirmada".equalsIgnoreCase(estado) || "Hospedado".equalsIgnoreCase(estado) || "Activa".equalsIgnoreCase(estado)) {
+                    // Si la fecha de consulta está entre la entrada y la salida de la reserva
+                    if (!fechaConsulta.isBefore(r.getFechaEntrada()) && fechaConsulta.isBefore(r.getFechaSalida())) {
+                        if (r.getHabitacion().getNumero().equalsIgnoreCase(hab.getNumero())) {
+                            ocupada = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!ocupada) {
+                disponibles.add(hab);
+            }
+        }
+        return disponibles;
+    }
+    public Reserva buscarReserva(String codigo) {
+        for (Reserva r : reservas) {
+            if (r.getCodigo().equalsIgnoreCase(codigo)) {
+                return r;
+            }
+        }
+        return null;
     }
 }    

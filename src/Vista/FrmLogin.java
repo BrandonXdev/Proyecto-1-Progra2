@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.Controlador;
+
 /**
  *
  * @author 09092026
@@ -138,7 +140,28 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        Controlador controlador = new Controlador();
+
+        String usuario = txtUsuario.getText().trim();
+        String password = txtContraseña.getText();
+
+        if (usuario.isEmpty() || password.isEmpty()) {
+            lblerrorLogin.setText("Complete todos los campos.");
+        } else if (controlador.validarLogin(usuario, password)) {
+            FrmHotel ventana = new FrmHotel();
+            ventana.setLocationRelativeTo(null);
+            ventana.setVisible(true);
+            this.dispose();
+            
+
+            } else {
+
+                 lblerrorLogin.setText("Usuario o contraseña incorrectos.");
+
+                 txtContraseña.setText("");
+}
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
