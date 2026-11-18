@@ -7,6 +7,7 @@ package Vista;
 import Controlador.Controlador;
 import Modelo.Habitacion;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -208,7 +209,7 @@ public class FrmHotel extends javax.swing.JFrame {
         pnlencabezado.setBackground(new java.awt.Color(11, 42, 91));
         pnlencabezado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Hotel");
 
@@ -216,12 +217,11 @@ public class FrmHotel extends javax.swing.JFrame {
         lblRecepcionista.setForeground(new java.awt.Color(255, 255, 255));
         lblRecepcionista.setText("Recepcionista: ");
 
-        btncambiarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         btncambiarUsuario.setForeground(new java.awt.Color(31, 42, 68));
         btncambiarUsuario.setText("Cambiar usuario");
         btncambiarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btncambiarUsuario.setBorderPainted(false);
-        btncambiarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btncambiarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btncambiarUsuario.addActionListener(this::btncambiarUsuarioActionPerformed);
 
         javax.swing.GroupLayout pnlencabezadoLayout = new javax.swing.GroupLayout(pnlencabezado);
@@ -231,25 +231,24 @@ public class FrmHotel extends javax.swing.JFrame {
             .addGroup(pnlencabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlencabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlencabezadoLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 431, Short.MAX_VALUE)
-                        .addComponent(btncambiarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
-                    .addGroup(pnlencabezadoLayout.createSequentialGroup()
-                        .addComponent(lblRecepcionista)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRecepcionista))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
+                .addComponent(btncambiarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         pnlencabezadoLayout.setVerticalGroup(
             pnlencabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlencabezadoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(pnlencabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncambiarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
+                .addComponent(btncambiarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlencabezadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(lblRecepcionista)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(pnlencabezado, java.awt.BorderLayout.PAGE_START);
@@ -573,16 +572,12 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(11, 42, 91));
         jLabel20.setText("Correo electrónico:");
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.addActionListener(this::txtNombreActionPerformed);
 
-        txtid.setBackground(new java.awt.Color(255, 255, 255));
         txtid.addActionListener(this::txtidActionPerformed);
 
-        txttelefono.setBackground(new java.awt.Color(255, 255, 255));
         txttelefono.addActionListener(this::txttelefonoActionPerformed);
 
-        txtemail.setBackground(new java.awt.Color(255, 255, 255));
         txtemail.addActionListener(this::txtemailActionPerformed);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -592,7 +587,6 @@ public class FrmHotel extends javax.swing.JFrame {
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(this::btnRegistrarActionPerformed);
 
-        btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
         btnlimpiar.setForeground(new java.awt.Color(31, 42, 68));
         btnlimpiar.setText("Limpiar");
         btnlimpiar.addActionListener(this::btnlimpiarActionPerformed);
@@ -626,8 +620,7 @@ public class FrmHotel extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator2)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,11 +636,12 @@ public class FrmHotel extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator2))
                 .addContainerGap())
         );
 
@@ -701,7 +695,7 @@ public class FrmHotel extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(pnlHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 139, Short.MAX_VALUE))
+                .addGap(0, 132, Short.MAX_VALUE))
         );
 
         tabPrincipal.addTab("Huéspedes", jPanel2);
@@ -738,7 +732,6 @@ public class FrmHotel extends javax.swing.JFrame {
         btnRegistrar3.setText("Registrar");
         btnRegistrar3.addActionListener(this::btnRegistrar3ActionPerformed);
 
-        btnClean2.setBackground(new java.awt.Color(255, 255, 255));
         btnClean2.setForeground(new java.awt.Color(31, 42, 68));
         btnClean2.setText("Limpiar");
         btnClean2.addActionListener(this::btnClean2ActionPerformed);
@@ -746,7 +739,6 @@ public class FrmHotel extends javax.swing.JFrame {
         lblCodigo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCodigo1.setForeground(new java.awt.Color(11, 42, 91));
 
-        cbxHabitacionHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
         cbxHabitacionHabitaciones.setForeground(new java.awt.Color(11, 42, 91));
         cbxHabitacionHabitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Doble", "Familiar" }));
         cbxHabitacionHabitaciones.addActionListener(this::cbxHabitacionHabitacionesActionPerformed);
@@ -932,7 +924,6 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(11, 42, 91));
         jLabel30.setText("Personas");
 
-        txtHuesped.setBackground(new java.awt.Color(255, 255, 255));
         txtHuesped.addActionListener(this::txtHuespedActionPerformed);
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -942,7 +933,6 @@ public class FrmHotel extends javax.swing.JFrame {
         btnRegistrar2.setText("Registrar");
         btnRegistrar2.addActionListener(this::btnRegistrar2ActionPerformed);
 
-        btnClean1.setBackground(new java.awt.Color(255, 255, 255));
         btnClean1.setForeground(new java.awt.Color(31, 42, 68));
         btnClean1.setText("Limpiar");
         btnClean1.addActionListener(this::btnClean1ActionPerformed);
@@ -950,7 +940,6 @@ public class FrmHotel extends javax.swing.JFrame {
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCodigo.setForeground(new java.awt.Color(11, 42, 91));
 
-        cbxHabitacionReserva.setBackground(new java.awt.Color(255, 255, 255));
         cbxHabitacionReserva.setForeground(new java.awt.Color(11, 42, 91));
         cbxHabitacionReserva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Doble", "Familiar" }));
         cbxHabitacionReserva.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -967,21 +956,18 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(11, 42, 91));
         jLabel31.setText("Fecha entrada:");
 
-        txtFechaEntrada.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaEntrada.addActionListener(this::txtFechaEntradaActionPerformed);
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(11, 42, 91));
         jLabel32.setText("Fecha salida:");
 
-        txtFechaSalida.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaSalida.addActionListener(this::txtFechaSalidaActionPerformed);
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(11, 42, 91));
         jLabel33.setText("Noches: ");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setForeground(new java.awt.Color(11, 42, 91));
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
@@ -1005,32 +991,29 @@ public class FrmHotel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRegistrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtHuesped)
-                                        .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxHabitacionReserva, 0, 337, Short.MAX_VALUE)
-                                        .addComponent(spnPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFechaEntrada)
-                                        .addComponent(txtFechaSalida)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnClean1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtHuesped)
+                                .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbxHabitacionReserva, 0, 337, Short.MAX_VALUE)
+                                .addComponent(spnPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFechaEntrada)
+                                .addComponent(txtFechaSalida)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnClean1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -1133,7 +1116,6 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(11, 42, 91));
         jLabel7.setText("Fecha de consulta: ");
 
-        txtFechaConsulta.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txtFechaConsulta.addActionListener(this::txtFechaConsultaActionPerformed);
 
@@ -1226,7 +1208,6 @@ public class FrmHotel extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(11, 42, 91));
         jLabel17.setText("Codigo de reserva");
 
-        txtCodigoReserva.setBackground(new java.awt.Color(255, 255, 255));
         txtCodigoReserva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txtCodigoReserva.addActionListener(this::txtCodigoReservaActionPerformed);
 
@@ -1412,7 +1393,16 @@ public class FrmHotel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncambiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiarUsuarioActionPerformed
-        // TODO add your handling code here:
+        int confirmar = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Desea cerrar la sesión actual y cambiar de usuario?", 
+                "Cambiar de usuario", JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE);
+        if (confirmar == JOptionPane.YES_NO_OPTION) {
+            controlador.cerrarCesion();
+            FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btncambiarUsuarioActionPerformed
 
     private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarActionPerformed

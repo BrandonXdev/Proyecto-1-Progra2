@@ -168,6 +168,9 @@ public class Controlador {
             r.setFechaSalidaReal(java.time.LocalDate.now());
         }
     }
+    public void cerrarCesion(){
+        gestor.setRecepcionistaActivo(null);
+    }
   
  
 }
