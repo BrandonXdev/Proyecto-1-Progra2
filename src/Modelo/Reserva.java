@@ -36,8 +36,9 @@ public class Reserva {
         this.fechaSalidaReal = fechaSalidaReal;       
         this.estado = estado;
         this.recepcionista = recepcionista;
-        this.importeTotal = cantidadNoches * habitacion.tarifaPorNoche();
         this.cantidadNoches = (int) ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
+        this.importeTotal = cantidadNoches * habitacion.tarifaPorNoche();
+        
     }
 
     public String getCodigo() {
