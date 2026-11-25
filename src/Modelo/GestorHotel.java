@@ -95,7 +95,7 @@ public class GestorHotel {
         System.out.println("Total Habitaciones: " + totalHabitaciones);
         System.out.println("Reservas Confirmadas: " + confirmadas);
         System.out.println("Reservas Vencidas: " + vencidas);
-        System.out.println("Ingresos Esperados (Recursivo): ₡" + ingresos);
+        System.out.println("Ingresos Esperados (Recursivo): " + ingresos);
         System.out.println("-----------------------------");
         
  }
@@ -148,10 +148,8 @@ public class GestorHotel {
         for (Habitacion hab : habitaciones) {
             boolean ocupada = false;
             for (Reserva r : reservas) {
-                // Verificamos si la reserva está activa/confirmada/hospedada
                 String estado = r.getEstado();
                 if ("Confirmada".equalsIgnoreCase(estado) || "Hospedado".equalsIgnoreCase(estado) || "Activa".equalsIgnoreCase(estado)) {
-                    // Si la fecha de consulta está entre la entrada y la salida de la reserva
                     if (!fechaConsulta.isBefore(r.getFechaEntrada()) && fechaConsulta.isBefore(r.getFechaSalida())) {
                         if (r.getHabitacion().getNumero().equalsIgnoreCase(hab.getNumero())) {
                             ocupada = true;

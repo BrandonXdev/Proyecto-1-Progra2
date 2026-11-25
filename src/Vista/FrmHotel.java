@@ -1632,7 +1632,6 @@ public class FrmHotel extends javax.swing.JFrame {
                 throw new Exception("La identificación y el nombre son obligatorios.");
             }
 
-            // Llamamos al controlador
             controlador.registrarHuesped(id, nombre, telefono, correo);
 
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -1682,9 +1681,9 @@ public class FrmHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnejcutarProcesosActionPerformed
 
     private void cbxHabitacionReservaPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbxHabitacionReservaPopupMenuWillBecomeVisible
-       cbxHabitacionReserva.removeAllItems(); // Limpia lo viejo
+       cbxHabitacionReserva.removeAllItems(); 
     for (Modelo.Habitacion h : controlador.getListaHabitaciones()) {
-        cbxHabitacionReserva.addItem(h.getNumero()); // Carga las habitaciones actuales
+        cbxHabitacionReserva.addItem(h.getNumero()); 
     }
     }//GEN-LAST:event_cbxHabitacionReservaPopupMenuWillBecomeVisible
 
