@@ -1544,37 +1544,32 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane2" pref="589" max="32767" attributes="0"/>
+                                  <Component id="jLabel31" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Component id="jLabel32" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Component id="jLabel33" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel31" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <Component id="jLabel32" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <Component id="jLabel33" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel28" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                                                  <Component id="jLabel27" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                                                  <Component id="jLabel29" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                                                  <Component id="jLabel30" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                                                  <Component id="btnRegistrar2" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txtHuesped" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="lblCodigo" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="cbxHabitacionReserva" alignment="0" pref="337" max="32767" attributes="0"/>
-                                                      <Component id="spnPersonas" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                                                      <Component id="txtFechaEntrada" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtFechaSalida" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jTextField1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="btnClean1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="jLabel28" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Component id="jLabel27" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Component id="jLabel29" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Component id="jLabel30" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <Component id="btnRegistrar2" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtHuesped" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblCodigo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cbxHabitacionReserva" alignment="0" pref="337" max="32767" attributes="0"/>
+                                              <Component id="spnPersonas" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                              <Component id="txtFechaEntrada" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtFechaSalida" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jTextField1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="btnClean1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
